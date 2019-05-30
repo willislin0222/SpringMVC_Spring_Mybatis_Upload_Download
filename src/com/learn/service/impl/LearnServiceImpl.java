@@ -1,6 +1,8 @@
 package com.learn.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,11 @@ public class LearnServiceImpl implements LearnService{
 	public void addLearn(LearnVO learnVO) {
 		learn_Interface.insert(learnVO);
 		
+	}
+
+	@Override
+	public List<LearnVO> getAll() {
+		return learn_Interface.getAll();
 	}
 
 	

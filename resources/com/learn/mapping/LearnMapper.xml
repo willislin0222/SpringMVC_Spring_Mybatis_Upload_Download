@@ -14,5 +14,8 @@
 		(no,name,url)
 		VALUES(#{no},#{name},#{url}); 
 	</insert>
+	<select id="getAll" resultType="com.learn.pojo.LearnVO">
+        select * from Learn
+    </select>
 	
 </mapper>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>員工列表 here</title>
+<title>檔案列表 </title>
 </head>
 <body>
    <table border="1">
@@ -15,18 +15,12 @@
           <td>URL</td>
           <td>刪除</td>
         </tr>   
-      <c:forEach var="slearnList"   items="${requestScope.staffList}">
+      <c:forEach var="learnList"   items="${requestScope.learnList}">
         <tr>
-          <td><a href="${pageContext.request.contextPath}/staff/getStaffInfo?Sta_no=${staffList.sta_no}">
-                ${staffList.sta_no}</a></td>
-          <td>${staffList.sta_name}</td>
-          <td>${staffList.sta_id}</td>
-          <td>${staffList.sta_tel}</td>
-          <td>${staffList.sta_sex}</td>
-          <td>${staffList.sta_joindate}</td>
-          <td>${staffList.sta_status}</td>
-          <td><a href="${pageContext.request.contextPath}/staff/deleteStaff?Sta_no=${staffList.sta_no}">
-                ${staffList.sta_no}</a></td>
+          <td>${learnList.no}</a></td>
+          <td>${learnList.name}</td>
+	      <td>${learnList.url}</td>
+          <td><img src=${learnList.url}></td>
         </tr>                         
       </c:forEach>
     </table>

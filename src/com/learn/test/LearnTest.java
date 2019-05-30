@@ -31,10 +31,7 @@ public class LearnTest extends Junit4Test{
 		learnVO.setNo(7);
 		learnVO.setName("TEST");
 		learnVO.setUrl("C:/Downloads");
-		learnService.addLearn(learnVO);
-		
-
-		
+		learnService.addLearn(learnVO);	
 		
 	}
 }

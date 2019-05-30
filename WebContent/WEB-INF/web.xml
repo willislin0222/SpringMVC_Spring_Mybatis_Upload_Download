@@ -23,20 +23,20 @@
   </context-param>  
   
   <!-- 设定刷新日志配置文件的时间间隔，这里设置为10s --> 
-   <context-param>
-       <param-name>log4jRefreshInterval</param-name>
-       <param-value>10000</param-value>
-   </context-param>
+<!--    <context-param> -->
+<!--        <param-name>log4jRefreshInterval</param-name> -->
+<!--        <param-value>10000</param-value> -->
+<!--    </context-param> -->
    
    <!-- 加载Spring框架中的log4j监听器Log4jConfigListener --> 
-   <listener>
-       <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-   </listener>
-   <!-- 为避免项目间冲突，定义唯一的 webAppRootKey --> 
-   <context-param>
-       <param-name>webAppRootKey</param-name>
-       <param-value>spmvc2</param-value>
-   </context-param>  
+<!--    <listener> -->
+<!--        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> -->
+<!--    </listener> -->
+    <!-- 为避免项目间冲突，定义唯一的 webAppRootKey -->  
+<!--    <context-param> -->
+<!--        <param-name>webAppRootKey</param-name> -->
+<!--        <param-value>spmvc2</param-value> -->
+<!--    </context-param>   -->
    
    <!-- 编码过滤器 --> 
   <filter>
@@ -72,6 +72,13 @@
     <load-on-startup>1</load-on-startup>
     <async-supported>true</async-supported>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.jpg</url-pattern>
+    <url-pattern>*.jpeg</url-pattern>
+    <url-pattern>*.rmvb</url-pattern>
+    <url-pattern>*.xls</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
  <!--     此处可以可以配置成*.do，对应struts的后缀习惯 --> 

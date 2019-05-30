@@ -8,7 +8,7 @@
 </head>
 <body>
     <h3>員工註冊</h3>    <br>
-    <form method="post" action="${pageContext.request.contextPath}/learn/addLearn">
+    <form method="post" action="${pageContext.request.contextPath}/learn/addLearn" enctype="multipart/form-data">
        <table>
            <tr>
                <td><label>NO：</label></td>
@@ -20,7 +20,7 @@
            </tr>
            <tr>
                <td><label>URL：</label></td>
-               <td><input type="text" name="url"></td>
+               <td><input type="file" name="file"></td>
            </tr>
            <tr>
                <td><input type="submit" value="註冊"></td>
