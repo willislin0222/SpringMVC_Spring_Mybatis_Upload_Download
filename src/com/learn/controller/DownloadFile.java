@@ -2,9 +2,6 @@ package com.learn.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,18 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
 
 public class DownloadFile {
 
-public ResponseEntity<byte[]> download(HttpServletRequest request,String filename,Model model) throws IOException{
+public ResponseEntity<byte[]> download(HttpServletRequest request,String filename,Model model,String fileUrl) throws IOException{
 	
-	//文件命名並保存到服務器
-    DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss"); //檔案名稱為年月日時分秒
-    DateFormat folderdate = new SimpleDateFormat("yyyyMMdd"); //檔案名稱為年月日時分秒
 	//下載檔案路徑
-    String path = request.getServletContext().getRealPath("/resources/upload/" + folderdate.format(new Date()));
-    File file = new File(path + File.separator + filename);
+    File file = new File(fileUrl + File.separator + filename);
     HttpHeaders headers = new HttpHeaders();  
     //下載顯示的檔案名，解決中文名稱亂碼問題 
     String downloadFielName = new String(filename.getBytes("UTF-8"),"iso-8859-1");

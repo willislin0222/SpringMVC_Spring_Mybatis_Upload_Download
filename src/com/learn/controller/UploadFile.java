@@ -15,9 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class UploadFile {
 
-public String upLoadPhoto(MultipartFile file,HttpServletRequest request) throws IOException{
+public String[] upLoadPhoto(MultipartFile file,HttpServletRequest request) throws IOException{
 		
 		System.out.println("有檔案想要上傳");
+		//回傳的路徑陣列
+		String pathArray[] =  new String[2];
+		
 //		//取得上傳的檔案名稱
         String name = null;
         name = new String(file.getOriginalFilename().getBytes("iso-8859-1"), "UTF-8");
@@ -33,7 +36,7 @@ public String upLoadPhoto(MultipartFile file,HttpServletRequest request) throws 
         name = df.format(new Date()) +uploadContentType;             //存入伺服器檔案名稱為年月日時分秒+副檔名 
 		//獲得物理路徑webapp所在路徑
 		String pathRoot = request.getSession().getServletContext().getRealPath("");
-		String path="";
+		String filepath = request.getServletContext().getRealPath("/resources/upload/" + folderdate.format(new Date())) + "\\" + name;
         if(!file.isEmpty()){
 			//儲存的檔案
 			File savefile = new File(request.getServletContext().getRealPath("/resources/upload/" + folderdate.format(new Date())),name); 
@@ -44,11 +47,11 @@ public String upLoadPhoto(MultipartFile file,HttpServletRequest request) throws 
             }
 			file.transferTo(savefile);
 		}
-        String fileURL =request.getContextPath() + "/resources/upload/" + folderdate.format(new Date())+"/" +name;
-		System.out.println(fileURL);
-		request.setAttribute("imagesPath", fileURL);
+        String webPath =request.getContextPath() + "/resources/upload/" + folderdate.format(new Date())+ "/" +name;
 		request.setAttribute("filename", name);
+		pathArray[0] = webPath;
+		pathArray[1] = filepath;
 
-        return fileURL;
+        return pathArray;
 	}
 }

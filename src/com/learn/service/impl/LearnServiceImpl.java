@@ -28,6 +28,11 @@ public class LearnServiceImpl implements LearnService{
 		return learn_Interface.getAll();
 	}
 
+	@Override
+	public LearnVO findLearnByPk(int no) {
+		return learn_Interface.findLearnByPk(no);
+	}
+
 	
 
 }

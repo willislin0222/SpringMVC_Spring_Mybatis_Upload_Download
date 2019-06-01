@@ -11,11 +11,15 @@
      
      <insert id="insert" parameterType="com.learn.pojo.LearnVO"  keyProperty="sta_no">  
         INSERT INTO Learn 
-		(no,name,url)
-		VALUES(#{no},#{name},#{url}); 
+		(no,name,weburl,fileurl)
+		VALUES(#{no},#{name},#{weburl},#{fileurl}); 
 	</insert>
 	<select id="getAll" resultType="com.learn.pojo.LearnVO">
         select * from Learn
+    </select>
+    
+    <select id="findLearnByPk" resultType="com.learn.pojo.LearnVO">
+        select * from Learn where no=#{no}
     </select>
 	
 </mapper>

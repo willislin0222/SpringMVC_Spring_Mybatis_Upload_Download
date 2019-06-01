@@ -36,21 +36,27 @@ public class LearnController {
 	public String addLearn(LearnVO learnVO,Model model,HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {//新增資料
 		
 		UploadFile uploadFile = new UploadFile();
-		String url = uploadFile.upLoadPhoto(file,request);
-		learnVO.setUrl(url);
+		String[] url = uploadFile.upLoadPhoto(file,request);
+		learnVO.setWeburl(url[0]);
+		learnVO.setFileurl(url[1]);
 		this.learnService.addLearn(learnVO);
 		model.addAttribute("learnList", this.learnService.getAll());
 		model.addAttribute("learnVO", learnVO);
-		return "learn/success";
+		return "learn/LearnList";
 	}	
 	
 	@RequestMapping("/download")  //下檔檔案
-	public ResponseEntity<byte[]> addLearn(HttpServletRequest request,@RequestParam("filename") String filename,
+	public ResponseEntity<byte[]> addLearn(HttpServletRequest request,@RequestParam("no") String no,
             Model model) throws IOException {
 	
+	    LearnVO learnVO = new LearnVO();
+	    learnVO = learnService.findLearnByPk(Integer.valueOf(no));
 		DownloadFile downloadFile = new DownloadFile();
 		
-		return downloadFile.download(request, filename, model);
+		int local=learnVO.getFileurl().lastIndexOf("\\");
+		String fileName=learnVO.getFileurl().substring(local+1);
+		String fileUrl=learnVO.getFileurl().substring(0, local);
+		return downloadFile.download(request, fileName, model,fileUrl);
 	}	
 	
 }

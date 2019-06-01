@@ -12,15 +12,15 @@
    	  <tr>
           <td>NO</td>
           <td>NAME</td>
-          <td>URL</td>
-          <td>刪除</td>
+          <td>顯示圖片</td>
+          <td>下載檔案</td>
         </tr>   
       <c:forEach var="learnList"   items="${requestScope.learnList}">
         <tr>
           <td>${learnList.no}</a></td>
           <td>${learnList.name}</td>
-	      <td>${learnList.url}</td>
-          <td><img src=${learnList.url}></td>
+          <td><img src=${learnList.weburl} width="300px"></td>
+          <td><a href="${pageContext.request.contextPath}/learn/download?no=${learnList.no}">${filename}</td>
         </tr>                         
       </c:forEach>
     </table>

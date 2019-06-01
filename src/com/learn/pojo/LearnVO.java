@@ -4,7 +4,8 @@ public class LearnVO {
 	
 	private int no;
 	private String name;
-	private String url;
+	private String weburl;
+	private String fileurl;
 	
 	public int getNo() {
 		return no;
@@ -18,12 +19,19 @@ public class LearnVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUrl() {
-		return url;
+	public String getWeburl() {
+		return weburl;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setWeburl(String weburl) {
+		this.weburl = weburl;
 	}
+	public String getFileurl() {
+		return fileurl;
+	}
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
+	
 	
 	
 }

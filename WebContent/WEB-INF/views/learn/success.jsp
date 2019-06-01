@@ -8,10 +8,10 @@
 <title>头像</title>
 </head>
 <body>
-<img src="${imagesPath}">
+<img src="${learnVO.weburl}">
 
 <h3>檔案下載</h3>
-<a href="${pageContext.request.contextPath}/learn/download?filename=${filename}">
+<a href="${pageContext.request.contextPath}/learn/download?no=${learnVO.no}">
    ${filename}
 </a>
 </body>
